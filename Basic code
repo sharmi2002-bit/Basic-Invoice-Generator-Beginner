@@ -1,0 +1,47 @@
+def generate_bill(customer_name,items):
+    gst_percentage = 5  
+    delivery_charge = 50
+    subtotal = 0
+
+    print("\n" + "="*40)
+    print(f"Invoice for: {customer_name}")
+    print("="*40)
+    print(f"{'Item':<15}{'Qty':<5}{'Unit Price':<12}{'Total'}")
+    print("-"*40)
+
+    for item in items:
+        name = item['name']
+        quantity = item['quantity']
+        unit_price = item['price']
+        total_price = quantity * unit_price
+        subtotal += total_price
+        print(f"{name:<15}{quantity:<5}{unit_price:<12}{total_price}")
+
+    gst_amount = (gst_percentage / 100) * subtotal
+    final_amount = subtotal + gst_amount + delivery_charge
+
+    print("-"*40)
+    print(f"{'Subtotal':<32}Rs. {subtotal:.2f}")
+    print(f"{'GST (' + str(gst_percentage) + '%)':<32}Rs. {gst_amount:.2f}")
+    print(f"{'Delivery Charges':<32}Rs. {delivery_charge:.2f}")
+    print("="*40)
+    print(f"{'Final Amount':<32}Rs. {final_amount:.2f}")
+    print("="*40)
+
+def get_items_from_user():
+    item_list = []
+    num_items = int(input("Enter number of items: "))
+
+    for i in range(num_items):
+        print(f"\nEnter details for item {i + 1}:")
+        name = input("Item name: ")
+        quantity = int(input("Quantity: "))
+        price = float(input("Price per unit: "))
+
+        item = {"name": name, "quantity": quantity, "price": price}
+        item_list.append(item)
+
+    return item_list
+
+customer_name=input("Enter your name: ")
+generate_bill(customer_name,get_items_from_user())
