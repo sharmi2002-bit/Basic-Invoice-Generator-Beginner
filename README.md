@@ -1,9 +1,8 @@
-# Travel Agency Tour Management System
-
+# Invoice Generator
 A simple Python console-based program to generate Invoice
 
 ## Features
-- Ask foe user Identity
+- Ask for user Identity
 - inputs the Attributes and values of Items Purchased
 - generates the invoice after calculation
 ## Technologies
